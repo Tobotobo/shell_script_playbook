@@ -23,7 +23,7 @@ if [[ $1 == "--download" ]]; then
   if [[ $src_url == *.zip ]]; then
 
     temp_zip="${temp_dir}/src.zip"
-    curl -f -o "${temp_zip}" "${src_url}"
+    curl -f -o "${temp_zip}" -L "${src_url}"
     unzip -q -d "${temp_dir}" "${temp_zip}"
 
   elif [[ $src_url == *.tar.gz ]]; then
