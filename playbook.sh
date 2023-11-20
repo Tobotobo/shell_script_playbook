@@ -15,7 +15,7 @@ if [[ $1 == "--download" ]]; then
 
   # 終了時に一時フォルダを削除
   function on_exit() {
-    rm -rf "${temp_dir}"
+    # rm -rf "${temp_dir}"
   }
   trap on_exit EXIT
 
@@ -28,7 +28,7 @@ if [[ $1 == "--download" ]]; then
 
   elif [[ $src_url == *.tar.gz ]]; then
 
-    curl -f -o - "${src_url}" | tar -zxf - -C "${temp_dir}" --strip-components=1
+    curl -f -o - -L "${src_url}" | tar -zxf - -C "${temp_dir}" --strip-components=1
 
   else
     echo "ダウンロード対象のURLには zip または tar.gz へのURLを指定してください。"
