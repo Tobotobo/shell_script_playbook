@@ -24,7 +24,7 @@ if [[ $1 == "--download" ]]; then
   if [[ $src_url == *.zip ]]; then
 
     temp_zip="$(mktemp)"
-    curl -f -H 'Cache-Control: no-cache' -o "${temp_zip}" -L "${src_url}"
+    curl -f -H "Cache-Control: no-cache" -o "${temp_zip}" -L "${src_url}"
     ls "${temp_dir}"
     unzip -q -d "${temp_dir}" "${temp_zip}"
     ls "${temp_dir}"
@@ -40,7 +40,7 @@ if [[ $1 == "--download" ]]; then
 
   elif [[ $src_url == *.tar.gz ]]; then
 
-    curl -f -H 'Cache-Control: no-cache' -o - -L "${src_url}" | tar -zxf - -C "${temp_dir}" --strip-components=1
+    curl -f -H "Cache-Control: no-cache" -o - -L "${src_url}" | tar -zxf - -C "${temp_dir}" --strip-components=1
 
   else
     echo "ダウンロード対象のURLには zip または tar.gz へのURLを指定してください。"

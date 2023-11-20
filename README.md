@@ -20,7 +20,7 @@ Shell スクリプトで Ansible の PlayBook のようなものを目指す。
 
 ## ダウンロード実行
 ```
-bash <(curl -s "https://raw.githubusercontent.com/Tobotobo/shell_script_playbook/main/playbook.sh") \
+bash <(curl -f -s -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/Tobotobo/shell_script_playbook/main/playbook.sh") \
   --download \
   "https://github.com/Tobotobo/shell_script_playbook/archive/refs/heads/main.zip" \
   "hello_world_playbook"
