@@ -18,6 +18,14 @@ Shell スクリプトで Ansible の PlayBook のようなものを目指す。
   ./playbook.sh hello_world_playbook
   ```
 
+## ダウンロード実行
+```
+bash <(curl -s "https://raw.githubusercontent.com/Tobotobo/shell_script_playbook/main/playbook.sh") \
+  --download \
+  "https://github.com/Tobotobo/shell_script_playbook/archive/refs/heads/main.zip" \
+  "hello_world_playbook"
+```
+
 ## 関数一覧
 
 | 関数名 | 説明 |
