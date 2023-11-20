@@ -35,7 +35,8 @@ if [[ $1 == "--download" ]]; then
         break
       fi
     done
-    mv "${first_dir}/*" "${temp_dir}/"
+    echo "first_dir = ${first_dir}"
+    # mv "${first_dir}/*" "${temp_dir}/"
 
   elif [[ $src_url == *.tar.gz ]]; then
 
