@@ -27,6 +27,7 @@ if [[ $1 == "--download" ]]; then
     curl -f -H "Cache-Control: no-cache, no-store, must-revalidate" -H "Pragma: no-cache" -H "Expires: 0" \
       -o "${temp_zip}" -L "${src_url}"
     unzip -q -d "${temp_dir}" "${temp_zip}"
+    ls "${temp_dir}"
     first_dir=""
     for file in "${temp_dir}/*"; do
       if [ -d "$file" ]; then
@@ -34,6 +35,7 @@ if [[ $1 == "--download" ]]; then
         break
       fi
     done
+    echo "first_dir = ${first_dir}"
     mv "${first_dir}/*" "${temp_dir}/"
 
   elif [[ $src_url == *.tar.gz ]]; then
