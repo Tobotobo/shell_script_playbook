@@ -15,16 +15,25 @@ if [[ $1 == "--download" ]]; then
 
   # 終了時に一時フォルダを削除
   function on_exit() {
-    # rm -rf "${temp_dir}"
+    rm -rf "${temp_dir}"
+    rm -f "${temp_zip}"
   }
   trap on_exit EXIT
 
   # 一時フォルダにソースをダウンロード&解凍
   if [[ $src_url == *.zip ]]; then
 
-    temp_zip="${temp_dir}/src.zip"
+    temp_zip="$(mktemp)"
     curl -f -o "${temp_zip}" -L "${src_url}"
     unzip -q -d "${temp_dir}" "${temp_zip}"
+    local first_dir=""
+    for file in "${temp_dir}/*"; do
+      if [ -d "$file" ]; then
+        first_dir="$file"
+        break
+      fi
+    done
+    mv "${first_dir}/*" "${temp_dir}/"
 
   elif [[ $src_url == *.tar.gz ]]; then
 
