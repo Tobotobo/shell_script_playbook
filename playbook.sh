@@ -28,11 +28,7 @@ if [[ $1 == "--download" ]]; then
       -o "${temp_zip}" -L "${src_url}"
     unzip -q -d "${temp_dir}" "${temp_zip}"
     first_dir=$(find "${temp_dir}" -mindepth 1 -maxdepth 1 -type d | head -n 1)
-    echo "first_dir = ${first_dir}"
-    if [ -d ${first_dir} ]; then
-      echo "存在する"
-    fi
-    mv "${first_dir}/*" "${temp_dir}/"
+    mv "${first_dir}/"* "${temp_dir}/"
 
   elif [[ $src_url == *.tar.gz ]]; then
 
