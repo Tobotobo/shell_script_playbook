@@ -19,7 +19,7 @@ function remove_temp_dir() {
   if [ -d "$temp_dir" ]; then
     info "一時フォルダの削除を開始しました。"
     log $temp_dir
-    rm -r "$temp_dir"
+    rm -rf "$temp_dir"
     if [ $? -eq 0 ]; then
         success "一時フォルダの削除が完了しました。"
     else
